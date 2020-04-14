@@ -1,0 +1,21 @@
+//Last Stone Weight
+//https://leetcode.com/explore/challenge/card/30-day-leetcoding-challenge/529/week-2/3297/
+
+class Solution {
+public:
+    int lastStoneWeight(vector<int>& stones) {
+        multiset<int,greater<int>> m;int ans=0;
+        for(auto x:stones) m.insert(x);
+        while(!m.empty()){
+            int x = *m.begin(); m.erase(m.begin());
+            if(m.empty()){
+                ans=x;
+                break;
+            }
+            int y = *m.begin(); m.erase(m.begin());
+            if(x==y) continue;
+            else m.insert(abs(x-y));
+        }
+        return ans;
+    }
+};
