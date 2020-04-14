@@ -1,0 +1,10 @@
+//Move Zeroes
+//https://leetcode.com/explore/challenge/card/30-day-leetcoding-challenge/528/week-1/3286/
+
+class Solution {
+public:
+    void moveZeroes(vector<int>& a) {
+        int cnt=0;
+        for(int i=0;i<a.size();i++) if(a[i]!=0) swap(a[cnt++],a[i]);
+    }
+};
