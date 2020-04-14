@@ -1,0 +1,21 @@
+//Group Anagrams
+//https://leetcode.com/explore/challenge/card/30-day-leetcoding-challenge/528/week-1/3288/
+
+class Solution {
+public:
+    vector<vector<string>> groupAnagrams(vector<string>& strs) {
+        map<string,vector<string>> mp;
+        for(auto x:strs){
+            string t = x;
+            sort(t.begin(),t.end());
+            mp[t].push_back(x);
+        }
+        vector<vector<string>> v;
+        for(auto x:mp){
+            vector<string> st;
+            for(auto y:x.second) st.push_back(y);
+            v.push_back(st);
+        }
+        return v;
+    }
+};
