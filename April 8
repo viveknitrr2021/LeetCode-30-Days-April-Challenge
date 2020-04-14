@@ -1,0 +1,26 @@
+//Middle of the Linked List
+//https://leetcode.com/explore/challenge/card/30-day-leetcoding-challenge/529/week-2/3290/
+
+
+/**
+ * Definition for singly-linked list.
+ * struct ListNode {
+ *     int val;
+ *     ListNode *next;
+ *     ListNode(int x) : val(x), next(NULL) {}
+ * };
+ */
+class Solution {
+public:
+    ListNode* middleNode(ListNode* head) {
+        if(head==NULL or head->next==NULL) return head;
+        ListNode* f1=head;
+        ListNode* f2=head;
+        while(f2->next!=NULL and f2->next->next!=NULL){
+            f1=f1->next;
+            f2=f2->next->next;
+        }
+        if(f2->next!=NULL) f1=f1->next;
+        return f1;
+    }
+};
