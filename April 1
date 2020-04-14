@@ -1,0 +1,11 @@
+//Single Number
+//https://leetcode.com/explore/challenge/card/30-day-leetcoding-challenge/528/week-1/3283/
+
+class Solution {
+public:
+    int singleNumber(vector<int>& nums) {
+        int ans=0;
+        for(auto x:nums) ans^=x;
+        return ans;
+    }
+};
