@@ -1,0 +1,31 @@
+//Perform String Shifts
+//https://leetcode.com/explore/challenge/card/30-day-leetcoding-challenge/529/week-2/3299/
+
+class Solution {
+public:
+    string stringShift(string s, vector<vector<int>>& shift) {
+        list<char> l;
+        for(auto x:s) l.push_back(x);
+        for(auto x:shift){
+            int p=x[0];
+            int q=x[1];
+            if(p==0){
+                while(q--){
+                    char c = l.front();
+                    l.pop_front();
+                    l.push_back(c);
+                }
+            }
+            else{
+               while(q--){
+                    char c = l.back();
+                    l.pop_back();
+                    l.push_front(c);
+                } 
+            }
+        }
+        string t="";
+        for(auto x:l) t+=x;
+        return t;
+    }
+};
