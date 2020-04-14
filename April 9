@@ -1,0 +1,18 @@
+//Backspace String Compare
+//https://leetcode.com/explore/challenge/card/30-day-leetcoding-challenge/529/week-2/3291/
+
+class Solution {
+public:
+    bool backspaceCompare(string S, string T) {
+        stack<char> st1,st2;
+        for(auto x:S){
+            if(x=='#' and st1.empty()==0) st1.pop();
+            if(x!='#') st1.push(x);
+        }
+        for(auto x:T){
+            if(x=='#' and st2.empty()==0) st2.pop();
+            if(x!='#') st2.push(x);
+        }
+        return st1==st2;
+    }
+};
