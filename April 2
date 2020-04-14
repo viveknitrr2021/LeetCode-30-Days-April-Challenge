@@ -1,0 +1,20 @@
+//Happy Number
+//https://leetcode.com/explore/challenge/card/30-day-leetcoding-challenge/528/week-1/3284/
+
+class Solution {
+public:
+    int find(int n){
+        string s=to_string(n);int sum=0;
+        for(auto i:s) sum+=(i-48)*(i-48);
+        return sum;
+    }
+    bool isHappy(int n) {
+        map<int,int> mp;mp[n]++;
+        while(1){
+            if(n==1) return true;
+            n=find(n);
+            if(mp[n]) return false;
+            mp[n]++;
+        }
+    }
+};
