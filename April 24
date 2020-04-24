@@ -1,0 +1,43 @@
+//LRU Cache
+//https://leetcode.com/explore/challenge/card/30-day-leetcoding-challenge/531/week-4/3309/
+
+class LRUCache {
+public:
+    int sz;
+    list<int> l;
+    map<int,int> mp;
+    
+    LRUCache(int capacity) {
+        sz = capacity;
+    }
+    
+    int get(int key) {
+        if(mp.find(key) == mp.end()) return -1;
+        else{
+            l.remove(key);
+            l.push_back(key);
+            return mp[key];
+        }
+    }
+    
+    void put(int key, int value) {
+        if(mp.find(key) != mp.end()){
+            l.remove(key);
+            mp.erase(key);
+        }
+        if(l.size()==sz){
+            int top = l.front();
+            l.pop_front();
+            mp.erase(top);
+        }
+        mp[key] = value;
+        l.push_back(key);
+    }
+};
+
+/**
+ * Your LRUCache object will be instantiated and called as such:
+ * LRUCache* obj = new LRUCache(capacity);
+ * int param_1 = obj->get(key);
+ * obj->put(key,value);
+ */
