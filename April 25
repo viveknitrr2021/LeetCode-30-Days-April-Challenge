@@ -1,0 +1,14 @@
+//Jump Game
+//https://leetcode.com/explore/challenge/card/30-day-leetcoding-challenge/531/week-4/3310/
+
+class Solution {
+public:
+    bool canJump(vector<int>& nums) {
+        int p=0;
+        for(int i=0;i<nums.size()-1;i++){
+            if(nums[i]==0 and p<=i) return false;
+            p = max(p,i+nums[i]);
+        }
+        return (p>=nums.size()-1);
+    }
+};
