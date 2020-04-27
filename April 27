@@ -1,0 +1,28 @@
+//Maximal Square
+//https://leetcode.com/explore/challenge/card/30-day-leetcoding-challenge/531/week-4/3312/
+
+
+class Solution {
+public:
+    int maximalSquare(vector<vector<char>>& mat) {
+        int m = mat.size();
+        if(m==0) return 0;
+        int n = mat[0].size(),p=0;
+        vector<vector<int>> dp(m+1,vector<int>(n+1,0));
+        for(int i=1;i<=m;i++){
+            for(int j=1;j<=n;j++){
+                if(mat[i-1][j-1]=='0'){
+                    dp[i][j]=0;
+                }
+                else{
+                    int a = dp[i-1][j-1];
+                    int b = dp[i-1][j];
+                    int c = dp[i][j-1];
+                    dp[i][j] = 1+min(a,min(b,c));
+                }
+                p=max(p,dp[i][j]);
+            }
+        }
+        return p*p;
+    }
+};
